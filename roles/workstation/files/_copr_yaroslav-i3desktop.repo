@@ -1,0 +1,8 @@
+[yaroslav-i3desktop]
+name=Copr repo for i3desktop owned by yaroslav
+baseurl=https://copr-be.cloud.fedoraproject.org/results/yaroslav/i3desktop/fedora-$releasever-$basearch/
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/yaroslav/i3desktop/pubkey.gpg
+enabled=1
+enabled_metadata=1

@@ -1,0 +1,8 @@
+---
+- include: required.yml
+- include: repos.yml
+- include: google.yml
+- include: i3wm.yml
+- include: virt.yml
+- include: tlp.yml
+- include: bumblebee.yml

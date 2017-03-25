@@ -1,0 +1,6 @@
+---
+- name: python2-dnf is required
+  raw: rpm -q python2-dnf || dnf -y install python2-dnf
+
+- name: git is requiered
+  dnf: name=git state=present

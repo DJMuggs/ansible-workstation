@@ -1,0 +1,32 @@
+- name: install the i3 window manager packages
+  dnf: name={{ item }}
+       state=present
+  ignore_errors: yes
+  with_items:
+    - i3 
+    - i3-doc
+    - i3-ipc
+    - i3lock
+    - i3status
+    - rofi
+    - lightdm
+
+- name: git clone i3blocks
+  git: 
+    repo: "https://github.com/vivien/i3blocks.git"
+    dest: /tmp/i3blocks
+  ignore_errors: yes
+
+- name: compile and install i3blocks
+  raw: cd /tmp/i3blocks && make clean all && make install
+  ignore_errors: yes
+
+- name: disable gdm
+  systemd:
+    name: gdm
+    enabled: no
+
+- name: enable lightdm
+  systemd:
+    name: lightdm
+    enabled: yes

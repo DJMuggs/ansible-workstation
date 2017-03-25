@@ -1,0 +1,5 @@
+- name: Setup and configure a workstation
+  hosts: workstation
+  become: true
+  roles:
+    - workstation

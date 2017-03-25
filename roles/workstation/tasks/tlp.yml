@@ -1,0 +1,9 @@
+- name: install the tlp packages
+  dnf: name={{ item }}
+       state=present
+  ignore_errors: yes
+  with_items:
+    - tlp
+    - akmod-tp_smapi
+    - akmod-acpi_call
+    - kernel-devel 
