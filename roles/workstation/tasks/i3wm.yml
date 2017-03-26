@@ -12,16 +12,26 @@
     - lightdm
     - thunar
     - lxrandr
+    - xbacklight
+    - blueman
+    - feh
+
+- name: check if i3blocks is downloaded and compiled
+  raw: "[ -f /usr/local/bin/i3blocks ]"
+  register: i3blocks_done
+  ignore_errors: true
 
 - name: git clone i3blocks
   git: 
     repo: "https://github.com/vivien/i3blocks.git"
     dest: /tmp/i3blocks
   ignore_errors: yes
+  when: i3blocks_done|failed
 
 - name: compile and install i3blocks
   raw: cd /tmp/i3blocks && make clean all && make install
   ignore_errors: yes
+  when: i3blocks_done|failed
 
 - name: disable gdm
   systemd:
@@ -32,3 +42,18 @@
   systemd:
     name: lightdm
     enabled: yes
+
+- name: make sure ~/bin exists
+  file:
+    path: /home/cvee/bin
+    state: directory
+    owner: cvee
+    group: cvee
+
+- name: copy lock.sh to ~/bin
+  copy:
+    src: bin/lock.sh
+    dest: /home/cvee/bin/locl.sh
+    owner: cvee
+    group: cvee
+    mode: 0700

@@ -1,6 +1,12 @@
 ---
+- name: check if python2-dnf is installed
+  raw: rpm -q python2-dnf
+  register: installed
+  ignore_errors: true
+
 - name: python2-dnf is required
-  raw: rpm -q python2-dnf || dnf -y install python2-dnf
+  raw: dnf -y install python2-dnf
+  when: installed|failed
 
 - name: All the required packages for my workstation
   dnf: name={{ item }}
@@ -10,3 +16,5 @@
   - htop
   - libselinux-python
   - hplip-gui
+  - fontawesome-fonts
+  - fontawesome-fonts-web
