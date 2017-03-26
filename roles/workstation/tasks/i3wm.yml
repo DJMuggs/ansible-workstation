@@ -10,6 +10,8 @@
     - i3status
     - rofi
     - lightdm
+    - thunar
+    - lxrandr
 
 - name: git clone i3blocks
   git: 

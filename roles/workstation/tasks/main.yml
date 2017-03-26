@@ -6,3 +6,4 @@
 - include: virt.yml
 - include: tlp.yml
 - include: bumblebee.yml
+- include: dotfiles.yml
