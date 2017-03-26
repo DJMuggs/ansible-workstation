@@ -59,3 +59,12 @@
     owner: cvee
     group: cvee
     mode: 0700
+
+- name: copy wallpaper to ~/.wallpaper
+  copy:
+    src: wallpaper/star-trek-beyond.jpg
+    dest: /home/cvee/.wallpaper.jpg
+    owner: cvee
+    group: cvee
+    mode: 0644
+

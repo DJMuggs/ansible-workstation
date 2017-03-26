@@ -9,7 +9,7 @@
 
 - name: copy bash_profile to ~
   copy:
-    src: dotfiles/bashrc
+    src: dotfiles/bash_profile
     dest: /home/cvee/.bash_profile
     owner: cvee
     group: cvee
