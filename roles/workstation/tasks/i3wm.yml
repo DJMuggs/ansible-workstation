@@ -53,7 +53,7 @@
 - name: copy lock.sh to ~/bin
   copy:
     src: bin/lock.sh
-    dest: /home/cvee/bin/locl.sh
+    dest: /home/cvee/bin/lock.sh
     owner: cvee
     group: cvee
     mode: 0700
