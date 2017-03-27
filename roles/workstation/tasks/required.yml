@@ -20,3 +20,4 @@
   - fontawesome-fonts-web
   - setroubleshoot-server
   - setroubleshoot
+  - ansible-lint
