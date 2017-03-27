@@ -7,3 +7,4 @@
 - include: tlp.yml
 - include: bumblebee.yml
 - include: dotfiles.yml
+- include: vim.yml
