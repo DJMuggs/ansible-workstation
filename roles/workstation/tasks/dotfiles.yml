@@ -5,7 +5,7 @@
     dest: /home/{{ user }}/.bashrc
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
 
 - name: copy bash_profile to ~
   copy:
@@ -13,7 +13,7 @@
     dest: /home/{{ user }}/.bash_profile
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
 
 - name: copy fonts.conf to ~
   copy:
@@ -21,7 +21,7 @@
     dest: /home/{{ user }}/.fonts.conf
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
 
 - name: copy gitconfig to ~
   copy:
@@ -37,7 +37,17 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
+
+- name: make sure i3 script battery.py is executable
+  file:
+    path: /home/{{ user }}/.config/i3/battery.py
+    mode: 0755
+
+- name: make sure i3 script volume-pulseaudio is executable
+  file:
+    path: /home/{{ user }}/.config/i3/volume-pulseaudio
+    mode: 0755
 
 - name: copy i3blocks.conf to ~
   copy:
@@ -45,7 +55,7 @@
     dest: /home/{{ user }}/.i3blocks.conf
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
 
 - name: copy Xresources config to ~
   copy:
@@ -53,5 +63,5 @@
     dest: /home/{{ user }}/.Xresources
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0600
+    mode: 0644
 

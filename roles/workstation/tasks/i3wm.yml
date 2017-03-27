@@ -17,6 +17,7 @@
     - feh
     - scrot
     - ImageMagick
+    - acpi
 
 - name: check if i3blocks is downloaded and compiled
   raw: "[ -f /usr/local/bin/i3blocks ]"

@@ -1,0 +1,23 @@
+---
+- name: Install clamav
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - clamav
+    - clamav-scanner-systemd
+    - clamav-update
+    - clamtk
+    - thunar-sendto-clamtk
+
+- name: Enable clamav service
+  systemd:
+    name: clamd
+    enabled: yes
+  ignore_errors: true
+
+- name: Start clamav service
+  systemd:
+    name: clamd 
+    state: started
+  ignore_errors: true
