@@ -9,81 +9,81 @@
 
 - name: create .vim direcory in ~
   file:
-    path: /home/cvee/.vim
+    path: /home/{{ user }}/.vim
     state: directory
-    owner: cvee
-    group: cvee
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0755
 
 - name: create .vim/autoload direcory in ~
   file:
-    path: /home/cvee/.vim/autoload
+    path: /home/{{ user }}/.vim/autoload
     state: directory
-    owner: cvee
-    group: cvee
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0755
 
 - name: create .vim/bundle direcory in ~
   file:
-    path: /home/cvee/.vim/bundle
+    path: /home/{{ user }}/.vim/bundle
     state: directory
-    owner: cvee
-    group: cvee
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0755
 
 - name: git clone nerdtree
   git:
     repo: "https://github.com/scrooloose/nerdtree.git"
-    dest: /home/cvee/.vim/bundle/nerdtree
+    dest: /home/{{ user }}/.vim/bundle/nerdtree
 
 - name: git clone nerdtree-git-plugin
   git:
     repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git"
-    dest: /home/cvee/.vim/bundle/nerdtree-git-plugin
+    dest: /home/{{ user }}/.vim/bundle/nerdtree-git-plugin
 
 - name: git clone syntastic
   git:
     repo: "https://github.com/vim-syntastic/syntastic.git"
-    dest: /home/cvee/.vim/bundle/syntastic
+    dest: /home/{{ user }}/.vim/bundle/syntastic
 
 - name: git clone tabular
   git:
     repo: "https://github.com/godlygeek/tabular.git"
-    dest: /home/cvee/.vim/bundle/tabular
+    dest: /home/{{ user }}/.vim/bundle/tabular
 
 - name: git clone tlib_vim
   git:
     repo: "https://github.com/tomtom/tlib_vim.git"
-    dest: /home/cvee/.vim/bundle/tlib_vim
+    dest: /home/{{ user }}/.vim/bundle/tlib_vim
 
 - name: git clone vim-addon-mw-utils
   git:
     repo: "https://github.com/MarcWeber/vim-addon-mw-utils.git"
-    dest: /home/cvee/.vim/bundle/vim-addon-mw-utils
+    dest: /home/{{ user }}/.vim/bundle/vim-addon-mw-utils
 
 - name: git clone vim-snipmate
   git:
     repo: "https://github.com/garbas/vim-snipmate.git"
-    dest: /home/cvee/.vim/bundle/vim-snipmate
+    dest: /home/{{ user }}/.vim/bundle/vim-snipmate
 
 - name: git clone vim-snippets
   git:
     repo: "https://github.com/honza/vim-snippets.git"
-    dest: /home/cvee/.vim/bundle/vim-snippets
+    dest: /home/{{ user }}/.vim/bundle/vim-snippets
 
 - name: copy pathogen.vim config to ~
   copy:
     src: dotfiles/vim/autoload/pathogen.vim
-    dest: /home/cvee/.vim/autoload/pathogen.vim
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.vim/autoload/pathogen.vim
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy vimrc config to ~
   copy:
     src: dotfiles/vimrc
-    dest: /home/cvee/.vimrc
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.vimrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 

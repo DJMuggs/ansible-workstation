@@ -2,56 +2,56 @@
 - name: copy bashrc to ~
   copy:
     src: dotfiles/bashrc
-    dest: /home/cvee/.bashrc
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.bashrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy bash_profile to ~
   copy:
     src: dotfiles/bash_profile
-    dest: /home/cvee/.bash_profile
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.bash_profile
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy fonts.conf to ~
   copy:
     src: dotfiles/fonts.conf
-    dest: /home/cvee/.fonts.conf
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.fonts.conf
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy gitconfig to ~
   copy:
     src: dotfiles/gitconfig
-    dest: /home/cvee/.gitconfig
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.gitconfig
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy i3 to ~
   copy:
     src: dotfiles/i3
-    dest: /home/cvee/.config
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.config
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy i3blocks.conf to ~
   copy:
     src: dotfiles/i3blocks.conf
-    dest: /home/cvee/.i3blocks.conf
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.i3blocks.conf
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 
 - name: copy Xresources config to ~
   copy:
     src: dotfiles/Xresources
-    dest: /home/cvee/.Xresources
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.Xresources
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0600
 

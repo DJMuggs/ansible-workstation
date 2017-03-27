@@ -3,7 +3,7 @@
        state=present
   ignore_errors: yes
   with_items:
-    - i3 
+    - i3
     - i3-doc
     - i3-ipc
     - i3lock
@@ -24,7 +24,7 @@
   ignore_errors: true
 
 - name: git clone i3blocks
-  git: 
+  git:
     repo: "https://github.com/vivien/i3blocks.git"
     dest: /tmp/i3blocks
   ignore_errors: yes
@@ -47,24 +47,24 @@
 
 - name: make sure ~/bin exists
   file:
-    path: /home/cvee/bin
+    path: /home/{{ user }}/bin
     state: directory
-    owner: cvee
-    group: cvee
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: copy lock.sh to ~/bin
   copy:
     src: bin/lock.sh
-    dest: /home/cvee/bin/lock.sh
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/bin/lock.sh
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0700
 
 - name: copy wallpaper to ~/.wallpaper
   copy:
     src: wallpaper/star-trek-beyond.jpg
-    dest: /home/cvee/.wallpaper.jpg
-    owner: cvee
-    group: cvee
+    dest: /home/{{ user }}/.wallpaper.jpg
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0644
 
