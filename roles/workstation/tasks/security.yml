@@ -18,6 +18,6 @@
 
 - name: Start clamav service
   systemd:
-    name: clamd 
+    name: clamd
     state: started
   ignore_errors: true

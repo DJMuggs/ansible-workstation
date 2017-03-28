@@ -39,9 +39,19 @@
     group: "{{ user }}"
     mode: 0644
 
-- name: make sure i3 script battery.py is executable
+- name: make sure i3 script bandwidth2 is executable
   file:
-    path: /home/{{ user }}/.config/i3/battery.py
+    path: /home/{{ user }}/.config/i3/bandwidth2
+    mode: 0755
+
+- name: make sure i3 script batterybar is executable
+  file:
+    path: /home/{{ user }}/.config/i3/batterybar
+    mode: 0755
+
+- name: make sure i3 script monitor_manager is executable
+  file:
+    path: /home/{{ user }}/.config/i3/monitor_manager
     mode: 0755
 
 - name: make sure i3 script volume-pulseaudio is executable
