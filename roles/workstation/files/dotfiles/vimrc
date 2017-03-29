@@ -2,8 +2,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-autocmd vimenter * NERDTree
-
+let NERDTreeWinPos = 'left' 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -15,6 +14,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+nnoremap <f5> :NERDTreeToggle <CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

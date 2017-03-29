@@ -24,6 +24,7 @@
   raw: "[ -f /usr/local/bin/i3blocks ]"
   register: i3blocks_done
   ignore_errors: true
+  changed_when: false
 
 - name: git clone i3blocks
   git:
@@ -31,6 +32,8 @@
     dest: /tmp/i3blocks
   ignore_errors: yes
   when: i3blocks_done|failed
+  tags:
+  - skip_ansible_lint
 
 - name: compile and install i3blocks
   raw: cd /tmp/i3blocks && make clean all && make install

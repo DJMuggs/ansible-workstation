@@ -6,6 +6,7 @@
     - vim-common
     - vim-enhanced
     - vim-filesystem
+    - vim-omnicppcomplete
 
 - name: create .vim direcory in ~
   file:
@@ -35,41 +36,64 @@
   git:
     repo: "https://github.com/scrooloose/nerdtree.git"
     dest: /home/{{ user }}/.vim/bundle/nerdtree
+  tags:
+  - skip_ansible_lint
 
 - name: git clone nerdtree-git-plugin
   git:
     repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git"
     dest: /home/{{ user }}/.vim/bundle/nerdtree-git-plugin
+  tags:
+            - skip_ansible_lint
 
 - name: git clone syntastic
   git:
     repo: "https://github.com/vim-syntastic/syntastic.git"
     dest: /home/{{ user }}/.vim/bundle/syntastic
+  tags:
+            - skip_ansible_lint
 
 - name: git clone tabular
   git:
     repo: "https://github.com/godlygeek/tabular.git"
     dest: /home/{{ user }}/.vim/bundle/tabular
+  tags:
+            - skip_ansible_lint
+
+- name: git clone tagbar
+  git:
+    repo: "https://github.com/majutsushi/tagbar.git"
+    dest: /home/{{ user }}/.vim/bundle/tabgbar
+  tags:
+            - skip_ansible_lint
 
 - name: git clone tlib_vim
   git:
     repo: "https://github.com/tomtom/tlib_vim.git"
     dest: /home/{{ user }}/.vim/bundle/tlib_vim
+  tags:
+            - skip_ansible_lint
 
 - name: git clone vim-addon-mw-utils
   git:
     repo: "https://github.com/MarcWeber/vim-addon-mw-utils.git"
     dest: /home/{{ user }}/.vim/bundle/vim-addon-mw-utils
+  tags:
+            - skip_ansible_lint
 
 - name: git clone vim-snipmate
   git:
     repo: "https://github.com/garbas/vim-snipmate.git"
     dest: /home/{{ user }}/.vim/bundle/vim-snipmate
+  tags:
+            - skip_ansible_lint
 
 - name: git clone vim-snippets
   git:
     repo: "https://github.com/honza/vim-snippets.git"
     dest: /home/{{ user }}/.vim/bundle/vim-snippets
+  tags:
+            - skip_ansible_lint
 
 - name: copy pathogen.vim config to ~
   copy:

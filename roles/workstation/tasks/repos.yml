@@ -26,3 +26,4 @@
 
 - name: dnf copr enable yaroslav/i3desktop
   raw: dnf -y copr enable yaroslav/i3desktop
+  changed_when: false

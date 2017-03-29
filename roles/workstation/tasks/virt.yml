@@ -2,3 +2,8 @@
   dnf: name=@Virtualization
        state=present
 
+- name: add user to libvirt group
+  user:
+    name: "{{ user }}"
+    groups: libvirt,wheel,bumblebee
+    append: yes

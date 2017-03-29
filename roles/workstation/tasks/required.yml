@@ -3,6 +3,7 @@
   raw: rpm -q python2-dnf
   register: installed
   ignore_errors: true
+  changed_when: false
 
 - name: python2-dnf is required
   raw: dnf -y install python2-dnf

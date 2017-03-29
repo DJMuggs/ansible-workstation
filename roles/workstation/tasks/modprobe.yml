@@ -1,0 +1,38 @@
+---
+- name: check if iwlwifi.conf exists
+  raw: "[ -f /etc/modprobe.d/iwlwifi.conf ]"
+  register: modprobe_reload
+  ignore_errors: true
+  changed_when: false
+
+- name: Fix performance issues with Intel(R) Centrino(R) Advanced-N 6235 AGN wireless card.
+  copy:
+    src: etc/modprobe.d/iwlwifi.conf
+    dest: /etc/modprobe.d/iwlwifi.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: modprobe_reload|failed
+  ignore_errors: yes
+
+- name: Unload iwldvm kernel module
+  raw: modprobe -r iwldvm
+  when: modprobe_reload|failed
+  ignore_errors: true
+  changed_when: false
+
+- name: Unload iwlwifi kernel module
+  raw: modprobe -r iwlwifi
+  when: modprobe_reload|failed
+  ignore_errors: true
+  changed_when: false
+
+- name: Load iwlwifi kernel module
+  raw: modprobe iwlwifi
+  when: modprobe_reload|failed
+  ignore_errors: true
+  changed_when: false
+
+- pause:
+    seconds: 20
+  when: modprobe_reload|failed

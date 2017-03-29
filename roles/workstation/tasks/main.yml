@@ -5,6 +5,7 @@
 - include: dotfiles.yml
 - include: i3wm.yml
 - include: google.yml
+- include: modprobe.yml
 - include: security.yml
 - include: tlp.yml
 - include: vim.yml

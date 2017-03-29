@@ -37,7 +37,6 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0644
 
 - name: make sure i3 script bandwidth2 is executable
   file:
