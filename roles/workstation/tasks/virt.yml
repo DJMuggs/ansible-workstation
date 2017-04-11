@@ -2,8 +2,26 @@
   dnf: name=@Virtualization
        state=present
 
+- name: install the cloud image editting tools packages
+  dnf: name=libguestfs-tools
+       state=present
+
 - name: add user to libvirt group
   user:
     name: "{{ user }}"
-    groups: libvirt,wheel,bumblebee
+    groups: libvirt
     append: yes
+
+- name: create foreman user for foreman kvm deployments
+  user:
+    name: foreman
+    groups: libvirt
+    state: present
+    append: yes
+    generate_ssh_key: yes
+
+- name: add public key from satellite foreman user to manage libvirt
+  authorized_key:
+    user: foreman
+    state: present
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe/FT46y0AuiZRBYrawKHqvoTMcU8sh/7XtcH0ZR90d+5cd2guCLXwn3U5MSGRnKLnjG9cc2aWq4z/QkNNigu7GEP56QXQTHYN1HhLFkSbM2FtRs5WX5KGEOrjUZA65H5LHQZhubj1tgSpKTc9+xhNgwznNhpyhQYFLyPpCGQfVqKCvrQ3oa3nSWCZalNET8hOK/rlPLyELQKK1P74Kbxp9NHg1j0jv+tEuU/0daMEqLieZC8iy47QMPRs6GD4/nOK9+nF5EYL+2u3SBoSgy3o6bvqVh4as3ar4YqYjt6l7rYyPYF9ZnQq9/3XQk+nPm2OUBCDPuGIMxnj/lzv7Ct7 foreman@satellite6.dev.lan"

@@ -192,7 +192,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 ## Set the shortcuts and what they do
 set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (d) DP1 ON, (e) external DP only, (x) VGA OFF, (y) HDMI OFF, (z) DP1 OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --left-of eDP1 --primary, mode "default"
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of eDP1 --primary, mode "default"
     bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 --primary, mode "default"
     bindsym d exec --no-startup-id xrandr --output DP1 --auto --left-of eDP1 --primary, mode "default"
     bindsym e exec --no-startup-id xrandr --output DP1 --auto --left-of eDP1 --off, mode "default"
@@ -249,4 +249,4 @@ for_window [class="Virt-viewer"] floating enable, border normal 2
 for_window [class="Virt-manager"] floating enable, border normal 2
 for_window [class="Steam"] floating enable, border normal 2
 for_window [class="Vlc"] floating enable, border normal 2
-for_window [class="Ironkey"] floating enable, border normal 2
+for_window [class="Clamtk"] floating enable, border normal 2

@@ -10,14 +10,38 @@
     - clamtk
     - thunar-sendto-clamtk
 
-- name: Enable clamav service
-  systemd:
-    name: clamd
-    enabled: yes
-  ignore_errors: true
+- name: Copy /etc/clamd.d/scan.conf
+  copy:
+    src: etc/clamd.d/scan.conf
+    dest: /etc/clamd.d/scan.conf
+    owner: root
+    group: root
+    mode: 0644
 
-- name: Start clamav service
-  systemd:
-    name: clamd
-    state: started
-  ignore_errors: true
+- name: Copy /etc/sysconfig/freshclam
+  copy:
+    src: etc/sysconfig/freshclam
+    dest: /etc/sysconfig/freshclam
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy /etc/freshclam.conf
+  copy:
+    src: etc/freshclam.conf
+    dest: /etc/freshclam.conf
+    owner: root
+    group: root
+    mode: 0644
+
+#- name: Enable clamav service
+#  systemd:
+#    name: clamd
+#    enabled: yes
+#  ignore_errors: true
+
+#- name: Start clamav service
+#  systemd:
+#    name: clamd
+#    state: started
+#  ignore_errors: true

@@ -19,6 +19,7 @@
     - ImageMagick
     - acpi
     - python3-tkinter
+    - pavucontrol
 
 - name: check if i3blocks is downloaded and compiled
   raw: "[ -f /usr/local/bin/i3blocks ]"
