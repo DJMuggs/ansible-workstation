@@ -4,6 +4,7 @@
 - include: bumblebee.yml
 - include: dotfiles.yml
 - include: i3wm.yml
+- include: ioscheduler.yml
 - include: google.yml
 - include: modprobe.yml
 - include: security.yml

@@ -23,3 +23,5 @@
   - setroubleshoot
   - ansible-lint
   - gnome-tweak-tool
+  - '@Fonts'
+  - liveusb-creator
