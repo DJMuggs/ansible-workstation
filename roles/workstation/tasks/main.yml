@@ -1,6 +1,7 @@
 ---
 - include: required.yml
 - include: repos.yml
+- include: packages.yml
 - include: bumblebee.yml
 - include: dotfiles.yml
 - include: i3wm.yml

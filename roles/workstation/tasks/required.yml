@@ -8,20 +8,3 @@
 - name: python2-dnf is required
   raw: dnf -y install python2-dnf
   when: installed|failed
-
-- name: All the required packages for my workstation
-  dnf: name={{ item }}
-       state=present
-  with_items:
-  - keychain
-  - htop
-  - libselinux-python
-  - hplip-gui
-  - fontawesome-fonts
-  - fontawesome-fonts-web
-  - setroubleshoot-server
-  - setroubleshoot
-  - ansible-lint
-  - gnome-tweak-tool
-  - '@Fonts'
-  - liveusb-creator
