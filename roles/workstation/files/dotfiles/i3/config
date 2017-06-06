@@ -250,3 +250,4 @@ for_window [class="Virt-manager"] floating enable, border normal 2
 for_window [class="Steam"] floating enable, border normal 2
 for_window [class="Vlc"] floating enable, border normal 2
 for_window [class="Clamtk"] floating enable, border normal 2
+for_window [class="Remmina"] floating enable, border normal 2
