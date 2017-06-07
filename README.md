@@ -14,3 +14,8 @@ Use the following command to run this playbook:
 
 ansible-playbook -i inventory/workstation -bK workstation.yml -e user=$username
 
+
+There is also an backup and restore playbook voor your prescious data.
+Set the location os your backup disk and start
+
+ansible-playbook -i inventory/workstation -bK backup.yml -e user=$username,disk=$disk.
