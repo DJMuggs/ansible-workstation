@@ -1,0 +1,5 @@
+- name: Create a workstation backup
+  hosts: workstation
+  become: true
+  roles:
+    - backup
