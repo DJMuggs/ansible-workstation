@@ -1,0 +1,17 @@
+---
+- name: disk to unmount
+  mount:
+    path: /mnt/backup
+    state: unmounted
+
+- name: remove from fstab
+  mount:
+    path: /mnt/backup
+    state: absent
+
+- name: create backup dir to mount disk to
+  file:
+    path: /mnt/backup
+    state: absent
+
+

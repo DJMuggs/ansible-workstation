@@ -1,1 +1,6 @@
 ---
+- include: mount.yml
+- include: etc.yml
+- include: home.yml
+- include: libvirt.yml
+- include: unmount.yml

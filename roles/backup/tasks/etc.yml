@@ -1,1 +1,6 @@
 ---
+- name: Copy /etc to backup location
+  synchronize:
+    src: /etc
+    dest: /mnt/backup
+    links: no
