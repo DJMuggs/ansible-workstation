@@ -1,1 +1,8 @@
 ---
+- name: Copy users home directory to backup location
+  synchronize:
+    src: /home/{{ user }}
+    dest: /mnt/backup
+    links: no
+    checksum: no
+

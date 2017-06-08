@@ -15,7 +15,7 @@
   dnf: name={{ item }}
        state=present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release-1.0-0.noarch.rpm
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/25/x86_64/os/tlp-release-1.0.7-1.fc25.noarch.rpm
 
 - name: install the bumblebee repo packages
   dnf: name={{ item }}

@@ -10,6 +10,8 @@
     - i3status
     - rofi
     - lightdm
+    - lightdm-gtk
+    - lightdm-gtk-greeter-settings
     - thunar
     - lxrandr
     - xbacklight

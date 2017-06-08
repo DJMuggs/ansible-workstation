@@ -1,1 +1,7 @@
 ---
+- name: Copy /var/lib/libvirt to backup location
+  synchronize:
+    src: /var/lib/libvirt
+    dest: /mnt/backup
+    links: no
+
