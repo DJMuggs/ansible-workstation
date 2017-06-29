@@ -22,26 +22,8 @@
     - acpi
     - python3-tkinter
     - pavucontrol
-
-- name: check if i3blocks is downloaded and compiled
-  raw: "[ -f /usr/local/bin/i3blocks ]"
-  register: i3blocks_done
-  ignore_errors: true
-  changed_when: false
-
-- name: git clone i3blocks
-  git:
-    repo: "https://github.com/vivien/i3blocks.git"
-    dest: /tmp/i3blocks
-  ignore_errors: yes
-  when: i3blocks_done|failed
-  tags:
-  - skip_ansible_lint
-
-- name: compile and install i3blocks
-  raw: cd /tmp/i3blocks && make clean all && make install
-  ignore_errors: yes
-  when: i3blocks_done|failed
+    - polybar
+    - pygtk2
 
 - name: disable gdm
   systemd:
@@ -53,20 +35,21 @@
     name: lightdm
     enabled: yes
 
-- name: make sure ~/bin exists
-  file:
-    path: /home/{{ user }}/bin
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
-
-- name: copy lock.sh to ~/bin
+- name: copy i3-lock to /usr/local/bin
   copy:
-    src: bin/lock.sh
-    dest: /home/{{ user }}/bin/lock.sh
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0700
+    src: usr/local/bin/i3-lock
+    dest: /usr/local/bin/i3-lock
+    owner: root
+    group: root
+    mode: 0755
+
+- name: copy suspend service to systemd
+  copy:
+    src: etc/systemd/system/suspend.service
+    dest: /etc/systemd/system/suspend@{{ user }}.service
+    owner: root
+    group: root
+    mode: 0644
 
 - name: copy wallpaper to ~/.wallpaper
   copy:
@@ -75,4 +58,3 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
-

@@ -141,8 +141,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $mod+Shift+e exec ~/.i3/i3-exit
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -174,16 +173,6 @@ bindsym $mod+r mode "resize"
 # Lock screen
 bindsym Control+$mod+l exec --no-startup-id ~/bin/lock.sh
 
-# Volume control
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-
-# Suspend control
-bindsym Control+$mod+s exec /usr/bin/systemctl suspend
-
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
@@ -210,35 +199,14 @@ bindsym $mod+x mode "$mode_display"
 # Start bluetooth
 exec --no-startup-id /usr/bin/blueman-applet
 
+# Start nm-applet
+exec --no-startup-id /usr/bin/nm-applet
+
 # Wallpaper
-#exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper.jpg
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        #status_command i3status
-
-        font pango: System San Francisco Display, FontAwesome 10
-#        tray_output primary
-        status_command i3blocks
-        position bottom
-        strip_workspace_numbers yes
-#        bindsym button4 nop
-#        bindsym button5 nop
-#        colors {
-#          separator $base03
-#          background $base01
-#          statusline $base05
-#         border  background text
-#          focused_workspace  $base01 $base01    $base07
-#          active_workspace   $base01 $base02    $base03
-#          inactive_workspace $base01 $base01    $base03
-#       }
-}
-
-# Compton
-#exec compton -CGb 
+#Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #exec gnome-settings-daemon
 

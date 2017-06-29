@@ -24,6 +24,17 @@
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora25/noarch/bumblebee-release-1.2-1.noarch.rpm
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora25/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
 
+#- name: install the docker repo packages
+#  dnf: name=Docker-CE
+#       conf_file={{ item }}
+#       state=present
+#  with_items:
+#    - https://download.docker.com/linux/fedora/docker-ce.repo
+
 - name: dnf copr enable yaroslav/i3desktop
   raw: dnf -y copr enable yaroslav/i3desktop
+  changed_when: false
+
+- name: dnf copr enable notkild/polybar
+  raw: dnf -y copr enable notkild/polybar
   changed_when: false

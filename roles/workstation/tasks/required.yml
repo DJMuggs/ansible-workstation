@@ -8,3 +8,10 @@
 - name: python2-dnf is required
   raw: dnf -y install python2-dnf
   when: installed|failed
+
+- name: make sure ~/bin exists
+  file:
+    path: /home/{{ user }}/bin
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
