@@ -1,30 +1,30 @@
 - name: install the virtualization packages
-  dnf: 
+  dnf:
     name=@Virtualization
     state=present
 
 - name: start libvirtd service
-  systemd: 
+  systemd:
     name=libvirtd
     state=started
     enabled=yes
-         
+
 - name: install the cloud image editting tools packages
-  dnf: 
+  dnf:
     name=libguestfs-tools
     state=present
 
-- name: install docker community edition 
-  dnf: 
+- name: install docker community edition
+  dnf:
     name=docker-ce
     state=present
 
 - name: start libvirtd service
-  systemd: 
+  systemd:
     name=docker
     state=started
     enabled=yes
-         
+
 - name: add user to libvirt group
   user:
     name: "{{ user }}"
