@@ -3,7 +3,7 @@
        state=present
   ignore_errors: yes
   with_items:
-    - i3
+    - i3-gaps
     - i3-doc
     - i3-ipc
     - i3lock

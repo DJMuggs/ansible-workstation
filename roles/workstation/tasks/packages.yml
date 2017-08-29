@@ -2,6 +2,7 @@
 - name: All the packages I require for my workstation
   dnf: name={{ item }}
        state=present
+  ignore_errors: true
   with_items:
   - keychain
   - htop
@@ -17,3 +18,5 @@
   - liveusb-creator
   - remmina-plugins-spice
   - remmina-plugins-rdp
+  - rxvt-unicode
+  - python-netaddr

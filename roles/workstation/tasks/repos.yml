@@ -15,14 +15,15 @@
   dnf: name={{ item }}
        state=present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/25/x86_64/os/tlp-release-1.0.7-1.fc25.noarch.rpm
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/26/x86_64/os/tlp-release-1.0.8-2.fc26.noarch.rpm
+  ignore_errors: true
 
 - name: install the bumblebee repo packages
   dnf: name={{ item }}
        state=present
   with_items:
-    - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora25/noarch/bumblebee-release-1.2-1.noarch.rpm
-    - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora25/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
+    - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora26/noarch/bumblebee-release-1.2-1.noarch.rpm
+    - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora26/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
 
 #- name: install the docker repo packages
 #  dnf: name=Docker-CE

@@ -4,15 +4,18 @@
   register: grub_test
   changed_when: no
   failed_when: grub_test.rc == 2
+  ignore_errors: yes
 
 - name: configure grub for deadline i/o scheduler
   command: grubby --update-kernel=ALL --args=elevator=deadline
   when: grub_test.rc == 1
+  ignore_errors: yes
 
 - name: get list of block devices to test
   shell: ls /sys/block/ | egrep '^([shv]|xv])d[a-z]$'
   register: block_devs
   changed_when: no
+  ignore_errors: yes
 
 - name: test if block device using deadline i/o scheduler
   shell: cat /sys/block/{{ item }}/queue/scheduler | egrep -q '\[deadline\]'
@@ -20,8 +23,10 @@
   register: deadline_test
   changed_when: deadline_test.rc == 1
   failed_when: deadline_test.rc == 2
+  ignore_errors: yes
 
 - name: set block device to use deadline i/o scheduler
   shell: echo deadline > /sys/block/{{ item }}/queue/scheduler
   with_items: '{{ block_devs.stdout }}'
   when: deadline_test.changed
+  ignore_errors: yes

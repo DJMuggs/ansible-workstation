@@ -5,6 +5,8 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+for_window [class="^.*"] border pixel 0
+
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -136,6 +138,9 @@ workspace 6 output DP-1
 workspace 8 output DP-1
 workspace 10 output DP-1
 
+# Workspace Gaps
+smart_gaps on
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -174,20 +179,22 @@ bindsym $mod+r mode "resize"
 bindsym Control+$mod+l exec --no-startup-id ~/bin/lock.sh
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 ## Manual management of external displays
 ## Set the shortcuts and what they do
 set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (d) DP1 ON, (e) external DP only, (x) VGA OFF, (y) HDMI OFF, (z) DP1 OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of eDP1 --primary, mode "default"
-    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 --primary, mode "default"
-    bindsym d exec --no-startup-id xrandr --output DP1 --auto --left-of eDP1 --primary, mode "default"
-    bindsym e exec --no-startup-id xrandr --output DP1 --auto --left-of eDP1 --off, mode "default"
-    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
-    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
-    bindsym z exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
+    bindsym v exec --no-startup-id xrandr --output VGA-1 --auto --right-of eDP-1 --primary
+    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1 --primary
+    bindsym d exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1 --primary
+    bindsym e exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1 --off
+    bindsym x exec --no-startup-id xrandr --output VGA-1 --auto --off
+    bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --off
+    bindsym z exec --no-startup-id xrandr --output DP-1 --auto --off
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
