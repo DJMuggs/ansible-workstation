@@ -140,6 +140,8 @@ workspace 10 output DP-1
 
 # Workspace Gaps
 smart_gaps on
+gaps inner 5
+gaps outer 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -177,6 +179,11 @@ bindsym $mod+r mode "resize"
 # Some specific stuff for my laptop
 # Lock screen
 bindsym Control+$mod+l exec --no-startup-id ~/bin/lock.sh
+
+# scrot & gimp - root
+bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+# scrot & gimp - select window or rectangle
+bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
