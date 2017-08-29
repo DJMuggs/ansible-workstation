@@ -26,3 +26,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:tabular_loaded = 1
+
+set ts=2 sw=2
+set expandtab
+
+set background=dark
+colorscheme solarized

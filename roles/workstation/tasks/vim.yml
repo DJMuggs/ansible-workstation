@@ -44,56 +44,84 @@
     repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git"
     dest: /home/{{ user }}/.vim/bundle/nerdtree-git-plugin
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone syntastic
   git:
     repo: "https://github.com/vim-syntastic/syntastic.git"
     dest: /home/{{ user }}/.vim/bundle/syntastic
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone tabular
   git:
     repo: "https://github.com/godlygeek/tabular.git"
     dest: /home/{{ user }}/.vim/bundle/tabular
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone tagbar
   git:
     repo: "https://github.com/majutsushi/tagbar.git"
     dest: /home/{{ user }}/.vim/bundle/tabgbar
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone tlib_vim
   git:
     repo: "https://github.com/tomtom/tlib_vim.git"
     dest: /home/{{ user }}/.vim/bundle/tlib_vim
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone vim-addon-mw-utils
   git:
     repo: "https://github.com/MarcWeber/vim-addon-mw-utils.git"
     dest: /home/{{ user }}/.vim/bundle/vim-addon-mw-utils
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone vim-snipmate
   git:
     repo: "https://github.com/garbas/vim-snipmate.git"
     dest: /home/{{ user }}/.vim/bundle/vim-snipmate
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
 
 - name: git clone vim-snippets
   git:
     repo: "https://github.com/honza/vim-snippets.git"
     dest: /home/{{ user }}/.vim/bundle/vim-snippets
   tags:
-            - skip_ansible_lint
+  - skip_ansible_lint
+
+- name: git clone delimitMate
+  git:
+    repo: "https://github.com/vim-scripts/delimitMate.vim.git"
+    dest: /home/{{ user }}/.vim/bundle/delitmitMate
+  tags:
+  - skip_ansible_lint
+
+- name: git clone ShowTrailingWhitespace
+  git:
+    repo: "https://github.com/vim-scripts/ShowTrailingWhitespace.git"
+    dest: /home/{{ user }}/.vim/bundle/ShowTrailingWhitespace
+  tags:
+  - skip_ansible_lint
+
+- name: git clone Vim Solarized Colors
+  git:
+    repo: "https://github.com/altercation/vim-colors-solarized.git"
+    dest: /home/{{ user }}/.vim/bundle/vim-colors-solarized
+  tags:
+  - skip_ansible_lint
+
+- name: set owner .vim/bundle direcory ~
+  file:
+    path: /home/{{ user }}/.vim/bundle
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    recurse: yes
 
 - name: copy pathogen.vim config to ~
   copy:

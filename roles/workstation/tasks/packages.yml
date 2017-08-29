@@ -20,3 +20,5 @@
   - remmina-plugins-rdp
   - rxvt-unicode
   - python-netaddr
+  - ansible-lint
+  - rubygem-puppet-lint
