@@ -1,4 +1,4 @@
-Ansible playbook for running Fedora 25 with i3 on a Lenovo T540p.
+Ansible playbook for running Fedora 25 or higher with i3 on a Lenovo T540p.
 This includes the bumblebee driver for nvidia and fix the wireless perfomance of the Intel(R) Centrino(R) Advanced-N 6235 AGN.
 Will replace i3status with i3blocks and setup i3blocks for you.
 
