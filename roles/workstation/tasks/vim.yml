@@ -97,7 +97,7 @@
 
 - name: git clone delimitMate
   git:
-    repo: "https://github.com/vim-scripts/delimitMate.vim.git"
+    repo: "https://github.com/Raimondi/delimitMate.git"
     dest: /home/{{ user }}/.vim/bundle/delitmitMate
   tags:
   - skip_ansible_lint
