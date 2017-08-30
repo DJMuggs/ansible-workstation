@@ -39,4 +39,5 @@
   when: deadline_test.changed
   ignore_errors: yes
   tags:
+    - skip_ansible_lint
     - ioscheduler
