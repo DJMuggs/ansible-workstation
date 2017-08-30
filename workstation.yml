@@ -1,5 +1,7 @@
 - name: Setup and configure a workstation
   hosts: workstation
-  become: true
   roles:
-    - workstation
+    - { role: workstation, when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int >= 25 }
+  become: true
+  become_user: root
+  become_method: sudo

@@ -5,6 +5,7 @@
   changed_when: no
   failed_when: grub_test.rc == 2
   ignore_errors: yes
+  check_mode: no
   tags:
     - ioscheduler
 
@@ -20,6 +21,7 @@
   register: block_devs
   changed_when: no
   ignore_errors: yes
+  check_mode: no
   tags:
     - ioscheduler
 
