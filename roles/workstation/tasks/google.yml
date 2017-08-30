@@ -4,3 +4,5 @@
   ignore_errors: yes
   with_items:
     - google-chrome-stable
+  tags:
+    - google

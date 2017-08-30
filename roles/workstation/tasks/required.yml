@@ -4,10 +4,14 @@
   register: installed
   ignore_errors: true
   changed_when: false
+  tags:
+    - required
 
 - name: python2-dnf is required
   raw: dnf -y install python2-dnf
   when: installed|failed
+  tags:
+    - required
 
 - name: make sure ~/bin exists
   file:
@@ -15,3 +19,5 @@
     state: directory
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags:
+    - required

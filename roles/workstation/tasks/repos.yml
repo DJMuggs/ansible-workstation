@@ -4,12 +4,16 @@
   with_items:
     - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm
     - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm
+  tags:
+    - repos
 
 - name: install the google repo packages
   dnf: name={{ item }}
        state=present
   with_items:
     - https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+  tags:
+    - repos
 
 - name: install the TLP repo packages
   dnf: name={{ item }}
@@ -17,6 +21,8 @@
   with_items:
     - http://repo.linrunner.de/fedora/tlp/repos/releases/26/x86_64/os/tlp-release-1.0.8-2.fc26.noarch.rpm
   ignore_errors: true
+  tags:
+    - repos
 
 - name: install the bumblebee repo packages
   dnf: name={{ item }}
@@ -24,6 +30,8 @@
   with_items:
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora26/noarch/bumblebee-release-1.2-1.noarch.rpm
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora26/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
+  tags:
+    - repos
 
 #- name: install the docker repo packages
 #  dnf: name=Docker-CE
@@ -35,7 +43,11 @@
 - name: dnf copr enable yaroslav/i3desktop
   raw: dnf -y copr enable yaroslav/i3desktop
   changed_when: false
+  tags:
+    - repos
 
 - name: dnf copr enable notkild/polybar
   raw: dnf -y copr enable notkild/polybar
   changed_when: false
+  tags:
+    - repos

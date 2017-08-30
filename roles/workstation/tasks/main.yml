@@ -7,8 +7,8 @@
 - include: i3wm.yml
 - include: ioscheduler.yml
 - include: google.yml
-- include: modprobe.yml
-- include: security.yml
+- include: iwlwifi.yml
+- include: clamav.yml
 - include: tlp.yml
 - include: vim.yml
 - include: virt.yml

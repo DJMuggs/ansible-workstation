@@ -4,6 +4,8 @@
   register: modprobe_reload
   ignore_errors: true
   changed_when: false
+  tags:
+    - iwlwifi
 
 - name: Fix performance issues with Intel(R) Centrino(R) Advanced-N 6235 AGN wireless card.
   copy:
@@ -14,26 +16,36 @@
     mode: 0644
   when: modprobe_reload|failed
   ignore_errors: yes
+  tags:
+    - iwlwifi
 
 - name: Unload iwldvm kernel module
   raw: modprobe -r iwldvm
   when: modprobe_reload|failed
   ignore_errors: true
   changed_when: false
+  tags:
+    - iwlwifi
 
 - name: Unload iwlwifi kernel module
   raw: modprobe -r iwlwifi
   when: modprobe_reload|failed
   ignore_errors: true
   changed_when: false
+  tags:
+    - iwlwifi
 
 - name: Load iwlwifi kernel module
   raw: modprobe iwlwifi
   when: modprobe_reload|failed
   ignore_errors: true
   changed_when: false
+  tags:
+    - iwlwifi
 
 - name: We take a short break here
   pause:
     seconds: 20
   when: modprobe_reload|failed
+  tags:
+    - iwlwifi

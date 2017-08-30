@@ -24,16 +24,22 @@
     - pavucontrol
     - polybar
     - pygtk2
+  tags:
+    - i3wm
 
 - name: disable gdm
   systemd:
     name: gdm
     enabled: no
+  tags:
+    - i3wm
 
 - name: enable lightdm
   systemd:
     name: lightdm
     enabled: yes
+  tags:
+    - i3wm
 
 - name: copy i3-lock to /usr/local/bin
   copy:
@@ -42,6 +48,8 @@
     owner: root
     group: root
     mode: 0755
+  tags:
+    - i3wm
 
 - name: copy suspend service to systemd
   copy:
@@ -50,6 +58,8 @@
     owner: root
     group: root
     mode: 0644
+  tags:
+    - i3wm
 
 - name: copy wallpaper to ~/.wallpaper
   copy:
@@ -58,3 +68,5 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags:
+    - i3wm

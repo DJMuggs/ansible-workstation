@@ -4,21 +4,23 @@
        state=present
   ignore_errors: true
   with_items:
-  - keychain
-  - htop
-  - libselinux-python
-  - hplip-gui
-  - fontawesome-fonts
-  - fontawesome-fonts-web
-  - setroubleshoot-server
-  - setroubleshoot
-  - ansible-lint
-  - gnome-tweak-tool
-  - '@Fonts'
-  - liveusb-creator
-  - remmina-plugins-spice
-  - remmina-plugins-rdp
-  - rxvt-unicode
-  - python-netaddr
-  - ansible-lint
-  - rubygem-puppet-lint
+    - keychain
+    - htop
+    - libselinux-python
+    - hplip-gui
+    - fontawesome-fonts
+    - fontawesome-fonts-web
+    - setroubleshoot-server
+    - setroubleshoot
+    - ansible-lint
+    - gnome-tweak-tool
+    - '@Fonts'
+    - liveusb-creator
+    - remmina-plugins-spice
+    - remmina-plugins-rdp
+    - rxvt-unicode
+    - python-netaddr
+    - ansible-lint
+    - rubygem-puppet-lint
+  tags:
+    - packages

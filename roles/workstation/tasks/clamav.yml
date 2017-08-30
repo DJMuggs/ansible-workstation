@@ -9,6 +9,8 @@
     - clamav-update
     - clamtk
     - thunar-sendto-clamtk
+  tags:
+    - clamav
 
 - name: Copy /etc/clamd.d/scan.conf
   copy:
@@ -17,6 +19,8 @@
     owner: root
     group: root
     mode: 0644
+  tags:
+    - clamav
 
 - name: Copy /etc/sysconfig/freshclam
   copy:
@@ -25,6 +29,8 @@
     owner: root
     group: root
     mode: 0644
+  tags:
+    - clamav
 
 - name: Copy /etc/freshclam.conf
   copy:
@@ -33,15 +39,5 @@
     owner: root
     group: root
     mode: 0644
-
-#- name: Enable clamav service
-#  systemd:
-#    name: clamd
-#    enabled: yes
-#  ignore_errors: true
-
-#- name: Start clamav service
-#  systemd:
-#    name: clamd
-#    state: started
-#  ignore_errors: true
+  tags:
+    - clamav

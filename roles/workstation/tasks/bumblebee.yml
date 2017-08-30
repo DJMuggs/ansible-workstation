@@ -9,3 +9,5 @@
     - primus.x86_64
     - primus.i686
     - kernel-devel
+  tags:
+    - nvidia

@@ -7,3 +7,5 @@
     - akmod-tp_smapi
     - akmod-acpi_call
     - kernel-devel
+  tags:
+    - tlp

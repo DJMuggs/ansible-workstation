@@ -6,6 +6,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags:
+    - dotfiles
 
 - name: copy bash_profile to ~
   copy:
@@ -14,6 +16,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags:
+    - dotfiles
 
 - name: copy fonts.conf to ~
   copy:
@@ -22,6 +26,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags:
+    - dotfiles
 
 - name: copy gitconfig to ~
   copy:
@@ -30,6 +36,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0600
+  tags:
+    - dotfiles
 
 - name: copy i3 to ~/.config
   copy:
@@ -37,6 +45,8 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags:
+    - dotfiles
 
 - name: copy polybar to ~/.config
   copy:
@@ -44,6 +54,8 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags:
+    - dotfiles
 
 - name: copy Xresources config to ~
   copy:
@@ -52,4 +64,5 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
-
+  tags:
+    - dotfiles
