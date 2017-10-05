@@ -1,0 +1,7 @@
+---
+- name: Copy /opt/Citrix to backup location
+  synchronize:
+    src: /opt/Citrix
+    dest: /mnt/backup
+    links: no
+

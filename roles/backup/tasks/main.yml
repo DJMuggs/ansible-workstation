@@ -3,4 +3,5 @@
 - include: etc.yml
 - include: home.yml
 - include: libvirt.yml
+- include: citrix.yml
 - include: unmount.yml
