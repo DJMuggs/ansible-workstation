@@ -24,5 +24,8 @@
     - rubygem-puppet-lint
     - network-manager-applet
     - simple-scan
+    - webkitgtk3
+    - gtksourceview3
+    - https://remarkableapp.github.io/files/remarkable-1.87-1.rpm
   tags:
     - packages
