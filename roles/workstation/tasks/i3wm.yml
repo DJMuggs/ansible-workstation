@@ -28,14 +28,14 @@
   tags:
     - i3wm
 
-- name: disable gdm
+- name: disable gdm service
   systemd:
     name: gdm
     enabled: no
   tags:
     - i3wm
 
-- name: enable lightdm
+- name: enable lightdm service
   systemd:
     name: lightdm
     enabled: yes
@@ -61,6 +61,34 @@
     mode: 0644
   tags:
     - i3wm
+
+- name: enable suspend service
+  systemd:
+    name: suspend@{{ user }}.service
+    enabled: yes
+    state: stopped
+  tags:
+    - i3wm
+
+
+- name: copy lock service to systemd
+  copy:
+    src: etc/systemd/system/lock.service
+    dest: /etc/systemd/system/lock@{{ user }}.service
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - i3wm
+
+- name: enable lock service
+  systemd:
+    name: lock@{{ user }}.service
+    enabled: yes
+    state: started
+  tags:
+    - i3wm
+
 
 - name: copy wallpaper to ~/.wallpaper
   copy:

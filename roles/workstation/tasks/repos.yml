@@ -20,7 +20,7 @@
        state=present
   with_items:
     - http://repo.linrunner.de/fedora/tlp/repos/releases/25/x86_64/os/tlp-release-1.0.7-1.fc25.noarch.rpm
-  when: ansible_distribution_major_version == '25' 
+  when: ansible_distribution_major_version == '25'
   ignore_errors: true
   tags:
     - repos
@@ -30,7 +30,7 @@
        state=present
   with_items:
     - http://repo.linrunner.de/fedora/tlp/repos/releases/26/x86_64/os/tlp-release-1.0.8-2.fc26.noarch.rpm
-  when: ansible_distribution_major_version == '26' 
+  when: ansible_distribution_major_version == '26'
   ignore_errors: true
   tags:
     - repos
