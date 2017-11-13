@@ -9,6 +9,10 @@ This will run on localhost with a local connection, make sure you have sudo righ
 
 Also setup become in the /etc/ansible/ansible.cfg
 
+Requirements:
+- git
+- ansible
+- redhat-lsb
 
 Use the following command to run this playbook:
 

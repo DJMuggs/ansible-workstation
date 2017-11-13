@@ -141,3 +141,10 @@ rofi.bw: 0
 rofi.location: 2
 rofi.padding: 100
 rofi.fuzzy: false
+
+Xautolock.time: 5
+Xautolock.locker: /usr/local/bin/i3-lock
+Xautolock.nowlocker: /usr/local/bin/i3-lock
+Xautolock.detectsleep: true
+Xautolock.secure: true
+Xautolock.noclose: true

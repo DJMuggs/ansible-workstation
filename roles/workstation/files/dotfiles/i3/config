@@ -47,12 +47,6 @@ bindsym $mod+d exec rofi -show run -lines 5 -opacity "90" -font "System San Fran
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -182,7 +176,7 @@ bindsym $mod+r mode "resize"
 
 # Some specific stuff for my laptop
 # Lock screen
-bindsym Control+$mod+l exec --no-startup-id ~/bin/lock.sh
+bindsym $mod+l exec --no-startup-id /usr/local/bin/i3-lock
 
 # scrot & gimp - root
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
@@ -197,10 +191,9 @@ bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 ## Set the shortcuts and what they do
 set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (d) DP1 ON, (e) external DP only, (x) VGA OFF, (y) HDMI OFF, (z) DP1 OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA-1 --auto --right-of eDP-1 --primary
-    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1 --primary
+    bindsym v exec --no-startup-id xrandr --output VGA-1 --auto --left-of eDP-1 --primary
+    bindsym h exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1 --primary
     bindsym d exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1 --primary
-    bindsym e exec --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1 --off
     bindsym x exec --no-startup-id xrandr --output VGA-1 --auto --off
     bindsym y exec --no-startup-id xrandr --output HDMI-1 --auto --off
     bindsym z exec --no-startup-id xrandr --output DP-1 --auto --off

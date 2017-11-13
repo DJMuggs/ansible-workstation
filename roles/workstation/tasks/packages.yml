@@ -22,5 +22,7 @@
     - python-netaddr
     - ansible-lint
     - rubygem-puppet-lint
+    - network-manager-applet
+    - simple-scan
   tags:
     - packages

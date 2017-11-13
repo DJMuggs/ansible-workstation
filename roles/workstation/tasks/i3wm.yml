@@ -24,6 +24,7 @@
     - pavucontrol
     - polybar
     - pygtk2
+    - xautolock
   tags:
     - i3wm
 

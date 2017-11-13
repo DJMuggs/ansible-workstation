@@ -20,20 +20,27 @@
   tags:
     - virtualization
 
-- name: install docker community edition
+- name: install virt-who package
   dnf:
-    name=docker-ce
+    name=virt-who
     state=present
   tags:
     - virtualization
 
-- name: start libvirtd service
-  systemd:
-    name=docker
-    state=started
-    enabled=yes
-  tags:
-    - virtualization
+#- name: install docker community edition
+#  dnf:
+#    name=docker-ce
+#    state=present
+#  tags:
+#    - virtualization
+
+#- name: start docker service
+#  systemd:
+#    name=docker
+#    state=started
+#    enabled=yes
+#  tags:
+#    - virtualization
 
 - name: add user to libvirt group
   user:

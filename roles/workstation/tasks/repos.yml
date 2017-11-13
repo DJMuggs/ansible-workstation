@@ -50,6 +50,8 @@
 #       state=present
 #  with_items:
 #    - https://download.docker.com/linux/fedora/docker-ce.repo
+#  tags:
+#    - repos
 
 - name: dnf copr enable yaroslav/i3desktop
   raw: dnf -y copr enable yaroslav/i3desktop
