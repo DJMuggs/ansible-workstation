@@ -35,6 +35,17 @@
   tags:
     - repos
 
+- name: install the TLP repo packages Fedora 27
+  dnf: name={{ item }}
+       state=present
+  with_items:
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/27/x86_64/os/tlp-release-1.0.9-1.fc27.noarch.rpm
+  when: ansible_distribution_major_version == '27'
+  ignore_errors: true
+  tags:
+    - repos
+
+
 - name: install the bumblebee repo packages
   dnf: name={{ item }}
        state=present
@@ -53,14 +64,14 @@
 #  tags:
 #    - repos
 
-- name: dnf copr enable yaroslav/i3desktop
-  raw: dnf -y copr enable yaroslav/i3desktop
+- name: dnf copr enable plambri/desktop-apps for i3 gaps and polybar
+  raw: dnf -y copr enable gregw/i3desktop
   changed_when: false
   tags:
     - repos
 
-- name: dnf copr enable notkild/polybar
-  raw: dnf -y copr enable notkild/polybar
+- name: dnf copr enable gregw/i3desktop for rofi
+  raw: dnf -y copr enable gregw/i3desktop
   changed_when: false
   tags:
     - repos
