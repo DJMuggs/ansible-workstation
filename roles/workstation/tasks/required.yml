@@ -1,15 +1,20 @@
 ---
 - name: check if python2-dnf is installed
-  raw: rpm -q python2-dnf
+  command: rpm -q python2-dnf
   register: installed
   ignore_errors: true
   changed_when: false
+  args:
+    warn: false # set warn=false to prevent warning
   tags:
+    - skip_ansible_lint
     - required
 
 - name: python2-dnf is required
-  raw: dnf -y install python2-dnf
-  when: installed|failed
+  command: dnf -y install python2-dnf
+  when: installed is failed
+  args:
+    warn: false # set warn=false to prevent warning
   tags:
     - required
 

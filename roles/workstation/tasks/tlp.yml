@@ -1,6 +1,7 @@
 - name: install the tlp packages
-  dnf: name={{ item }}
-       state=present
+  dnf:
+    name: "{{ item }}"
+    state: present
   ignore_errors: yes
   with_items:
     - tlp

@@ -4,4 +4,3 @@
     src: /var/lib/libvirt
     dest: /mnt/backup
     links: no
-

@@ -1,6 +1,7 @@
 - name: install the i3 window manager packages
-  dnf: name={{ item }}
-       state=present
+  dnf:
+    name: "{{ item }}"
+    state: present
   ignore_errors: yes
   with_items:
     - i3-gaps
@@ -25,6 +26,7 @@
     - polybar
     - pygtk2
     - xautolock
+    - help2man
   tags:
     - i3wm
 
@@ -97,5 +99,26 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags:
+    - i3wm
+
+- name: git clone light for backlight control
+  git:
+    repo: "https://github.com/haikarainen/light.git"
+    dest: /home/{{ user }}/git/light
+  tags:
+    - skip_ansible_lint
+    - i3wm
+
+- name: build light executable and manpage
+  make:
+    chdir: /home/{{ user }}/git/light
+  tags:
+    - i3wm
+
+- name: install light executable and manpage
+  make:
+    chdir: /home/{{ user }}/git/light
+    target: install
   tags:
     - i3wm
