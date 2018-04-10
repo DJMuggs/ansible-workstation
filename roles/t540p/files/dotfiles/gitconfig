@@ -1,0 +1,20 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Cristian van Ee
+	email = cristian.vanee@cri-service.nl
+[core]
+	editor = vim
+	pager = less -r
+[push]
+	default = simple
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	cam = commit -a -m
+	st = status
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+	ui = auto

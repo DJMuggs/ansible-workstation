@@ -1,0 +1,87 @@
+- name: install the virtualization packages
+  dnf:
+    name=@Virtualization
+    state=present
+  tags:
+    - virtualization
+
+- name: start libvirtd service
+  systemd:
+    name=libvirtd
+    state=started
+    enabled=yes
+  tags:
+    - virtualization
+
+- name: install the cloud image editting tools packages
+  dnf:
+    name=libguestfs-tools
+    state=present
+  tags:
+    - virtualization
+
+- name: install virt-who package
+  dnf:
+    name=virt-who
+    state=present
+  tags:
+    - virtualization
+
+#- name: install docker community edition
+#  dnf:
+#    name=docker-ce
+#    state=present
+#  tags:
+#    - virtualization
+
+#- name: start docker service
+#  systemd:
+#    name=docker
+#    state=started
+#    enabled=yes
+#  tags:
+#    - virtualization
+
+- name: add user to libvirt group
+  user:
+    name: "{{ user }}"
+    groups: libvirt
+    append: yes
+  tags:
+    - virtualization
+
+- name: create foreman user for foreman kvm deployments
+  user:
+    name: foreman
+    groups: libvirt
+    state: present
+    append: yes
+    generate_ssh_key: yes
+  tags:
+    - virtualization
+
+- name: add public key from satellite foreman user to manage libvirt
+  authorized_key:
+    user: foreman
+    state: present
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDe/FT46y0AuiZRBYrawKHqvoTMcU8sh/7XtcH0ZR90d+5cd2guCLXwn3U5MSGRnKLnjG9cc2aWq4z/QkNNigu7GEP56QXQTHYN1HhLFkSbM2FtRs5WX5KGEOrjUZA65H5LHQZhubj1tgSpKTc9+xhNgwznNhpyhQYFLyPpCGQfVqKCvrQ3oa3nSWCZalNET8hOK/rlPLyELQKK1P74Kbxp9NHg1j0jv+tEuU/0daMEqLieZC8iy47QMPRs6GD4/nOK9+nF5EYL+2u3SBoSgy3o6bvqVh4as3ar4YqYjt6l7rYyPYF9ZnQq9/3XQk+nPm2OUBCDPuGIMxnj/lzv7Ct7 foreman@satellite6.dev.lan"
+  tags:
+    - virtualization
+
+- name: test if grub configured for hardware virt io
+  command: egrep -q 'kvm-intel.nested=1' /boot/efi/EFI/fedora/grub.cfg
+  register: grub_test
+  changed_when: no
+  failed_when: grub_test.rc == 2
+  ignore_errors: yes
+  check_mode: no
+  tags:
+    - virtualization
+
+- name: configure grub for hardware virt io
+  command: grubby --update-kernel=ALL --args=kvm-intel.nested=1
+  when: grub_test.rc == 1
+  ignore_errors: yes
+  tags:
+    - virtualization
+

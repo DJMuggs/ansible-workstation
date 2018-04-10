@@ -1,7 +1,7 @@
 ---
-- import_tasks: mount.yml
-- import_tasks: etc.yml
-- import_tasks: home.yml
-- import_tasks: libvirt.yml
-- import_tasks: citrix.yml
-- import_tasks: unmount.yml
+- include: mount.yml
+- include: etc.yml
+- include: home.yml
+- include: libvirt.yml
+- include: citrix.yml
+- include: unmount.yml
