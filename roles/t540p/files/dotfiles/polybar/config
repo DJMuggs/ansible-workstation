@@ -48,10 +48,14 @@ font-0 = "Misc Termsyn:size=8;0"
 font-1 = "MaterialIcons:pixesize=8;2"
 font-2 = siji:pixelsize=8;0
 font-3 = FontAwesome:pixelsize=8;0
+;font-0 = Wuncon Siji;2
+;font-1 = boxxy;3
+;font-2 = Monaco:pixelsize=11;3
+;font-3 = DejaVu Sans Mono:weight=none:pixelsize=9;3
 
 modules-left = i3
 modules-center = xwindow
-modules-right = wlan wlanspeedup wlanspeeddown lan lanspeedup lanspeeddown filesystem memory cpu temperature xbacklight volume xkeyboard battery date powermenu
+modules-right =  wlan-speed wlan lan filesystem memory cpu temperature volume xkeyboard battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -84,6 +88,52 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
+
+[module/lan]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/wlan]
+type = internal/network
+interface = wlp4s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid% : %local_ip%
+
+format-disconnected =
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/wlan-speed]
+type = internal/network
+interface = wlp4s0
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-underline = #cb4b16
+label-connected = ul: %upspeed% dl: %downspeed%
 
 [module/filesystem]
 type = internal/fs
@@ -131,28 +181,6 @@ label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = ""
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -181,76 +209,6 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp4s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid% %signal%%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/wlanspeedup]
-type = internal/network
-interface = wlp4s0
-label-connected = "%upspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #5b
-
-[module/wlanspeeddown]
-type = internal/network
-interface = wlp4s0
-label-connected = "%downspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #5b
-
-[module/lan]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/lanspeedup]
-type = internal/network
-interface = enp0s25
-label-connected = "%upspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #5b
-
-[module/lanspeeddown]
-type = internal/network
-interface = enp0s25
-label-connected = "%downspeed:7%"
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-foreground = #5b
 
 [module/date]
 type = internal/date
@@ -331,26 +289,6 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
-;format-charging = <animation-charging> <label-charging>
-;format-charging-underline = #ffb52a
-
-;format-discharging = <ramp-capacity> <label-discharging>
-;format-discharging-underline = ${self.format-charging-underline}
-
-;format-full-prefix = " "
-;format-full-prefix-foreground = ${colors.foreground-alt}
-;format-full-underline = ${self.format-charging-underline}
-
-;ramp-capacity-0 = 
-;ramp-capacity-1 = 
-;ramp-capacity-2 = 
-;ramp-capacity-foreground = ${colors.foreground-alt}
-
-;animation-charging-0 = 
-;animation-charging-1 = 
-;animation-charging-2 = 
-;animation-charging-foreground = ${colors.foreground-alt}
-;animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature

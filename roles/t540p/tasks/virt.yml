@@ -1,29 +1,24 @@
 - name: install the virtualization packages
   dnf:
-    name=@Virtualization
+    name=@virtualization
     state=present
   tags:
-    - virtualization
+    - virt
+
+- name: install extra virtualization packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libguestfs-tools
+  tags:
+    - virt
 
 - name: start libvirtd service
   systemd:
-    name=libvirtd
-    state=started
-    enabled=yes
-  tags:
-    - virtualization
-
-- name: install the cloud image editting tools packages
-  dnf:
-    name=libguestfs-tools
-    state=present
-  tags:
-    - virtualization
-
-- name: install virt-who package
-  dnf:
-    name=virt-who
-    state=present
+    name: libvirtd
+    state: started
+    enabled: yes
   tags:
     - virtualization
 

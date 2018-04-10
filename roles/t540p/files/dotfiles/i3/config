@@ -206,7 +206,7 @@ mode "$mode_display" {
 bindsym $mod+x mode "$mode_display"
 
 # Start bluetooth
-exec --no-startup-id /usr/bin/blueman-applet
+exec --no-startup-id /usr/bin/blueberry-tray
 
 # Start nm-applet
 exec --no-startup-id /usr/bin/nm-applet
