@@ -21,7 +21,7 @@ alert = #bd2c40
 [bar/top]
 monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 27
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -79,22 +79,22 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+;format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+;label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+;label-indicator-underline = ${colors.secondary}
 
 [module/lan]
 type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -111,11 +111,11 @@ interface = wlp4s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+;format-connected-underline = #9f78e1
 label-connected = %essid% : %local_ip%
 
 format-disconnected =
-format-disconnected-underline = ${self.format-connected-underline}
+;format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -137,6 +137,22 @@ format-connected-prefix-foreground = #5b
 [module/wlanspeeddown]
 type = internal/network
 interface = wlp4s0
+label-connected = "%downspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #5b
+
+[module/wwanspeedup]
+type = internal/network
+interface = wwp0s20u10i6
+label-connected = "%upspeed:7%"
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #5b
+
+[module/wwanspeeddown]
+type = internal/network
+interface = wwp0s20u10i6
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -164,9 +180,12 @@ interval = 25
 
 mount-0 = /
 
-Label-mounted = "%{F#5b5b5b}%{F-} %percentage_used%%"
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+remove-unmounted = true
+
+;fixed-values = true
+;spacing = 4
+
+label-mounted = %mountpoint%: %percentage_used%%
 
 [module/i3]
 type = internal/i3
@@ -229,9 +248,29 @@ ramp-coreload-7 = %{F#ff5c57}█%{F-}
 type = internal/memory
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
+#format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = #4bffdc
+label = %gb_used%/%gb_free%
+
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+format = <label> <bar-used>
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 16
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
 
 [module/date]
 type = internal/date
@@ -245,7 +284,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -287,14 +326,14 @@ time-format = %H:%M
 label-discharging = %percentage% %time%
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #f3f99d
+;format-charging-underline = #f3f99d
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 
 label-full = Fully charged
 
@@ -319,9 +358,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature%
 label-warn = %temperature%

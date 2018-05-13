@@ -17,13 +17,13 @@
   tags:
     - repos
 
-- name: install the TLP repo packages Fedora 26
+- name: install the TLP repo packages Fedora 28
   dnf:
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/26/x86_64/os/tlp-release-1.0.8-2.fc26.noarch.rpm
-  when: ansible_distribution_major_version == '26'
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/28/x86_64/os/tlp-release-1.28.0-1.fc28.noarch.rpm
+  when: ansible_distribution_major_version == '28'
   ignore_errors: true
   tags:
     - repos
@@ -47,6 +47,7 @@
   with_items:
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora{{ ansible_distribution_major_version }}/noarch/bumblebee-release-1.2-1.noarch.rpm
     - http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora{{ ansible_distribution_major_version }}/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
+  when: ansible_distribution_major_version == '27'
   tags:
     - repos
 
