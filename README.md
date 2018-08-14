@@ -13,7 +13,6 @@ The following software is required for this ansible playbook to work.
 
 - git
 - ansible
-- redhat-lsb
 
 ##### Run the playbook
 Use the following command to run this playbook:
