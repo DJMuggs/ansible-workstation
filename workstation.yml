@@ -1,7 +1,15 @@
 - name: Setup and configure a workstation
   hosts: workstation
   roles:
-    - { role: workstation, when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int >= 25 }
+    - role: common
+    - role: dotfiles
+    - role: ioscheduler
+    - role: google
+    - role: clamav
+    - role: vim
+    - role: virtualization
+    - role: foreman
+    - role: i3wm
   become: true
   become_user: root
   become_method: sudo

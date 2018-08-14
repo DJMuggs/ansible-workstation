@@ -1,8 +1,0 @@
-- name: install the google chrome packages
-  dnf: name={{ item }}
-       state=present
-  ignore_errors: yes
-  with_items:
-    - google-chrome-stable
-  tags:
-    - google

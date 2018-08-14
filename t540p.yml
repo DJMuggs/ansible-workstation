@@ -1,7 +1,16 @@
 - name: Setup and configure a workstation
   hosts: workstation
   roles:
-    - { role: t540p, when: ansible_os_family == 'RedHat' and ansible_lsb.major_release|int >= 26 }
+    - role: common
+    - role: dotfiles
+    - role: ioscheduler
+    - role: google
+    - role: clamav
+    - role: vim
+    - role: virtualization
+    - role: foreman
+    - { role: t540p, when: ansible_os_family == 'RedHat' and ansible_distribution_major_version >= 27 }
+    - role: i3wm
   become: true
   become_user: root
   become_method: sudo

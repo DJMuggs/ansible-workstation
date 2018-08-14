@@ -1,1 +1,67 @@
 ---
+- name: check if python2-dnf is installed
+  command: rpm -q python2-dnf
+  register: installed
+  ignore_errors: true
+  changed_when: false
+  args:
+    warn: false # set warn=false to prevent warning
+  tags:
+    - skip_ansible_lint
+    - common
+
+- name: python2-dnf is required
+  command: dnf -y install python2-dnf
+  when: installed is failed
+  args:
+    warn: false # set warn=false to prevent warning
+  tags:
+    - common
+
+- name: make sure ~/bin exists
+  file:
+    path: /home/{{ user }}/bin
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags:
+    - common
+
+- name: install the rpmfusion repo packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm
+    - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm
+  tags:
+    - common
+
+- name: All the packages I require for my workstation
+  dnf:
+    name: "{{ item }}"
+    state: present
+  ignore_errors: true
+  with_items:
+    - keychain
+    - htop
+    - libselinux-python
+    - hplip-gui
+    - fontawesome-fonts
+    - fontawesome-fonts-web
+    - setroubleshoot-server
+    - setroubleshoot
+    - ansible-lint
+    - gnome-tweak-tool
+    - '@Fonts'
+    - '@Development Tools'
+    - liveusb-creator
+    - remmina-plugins-spice
+    - remmina-plugins-rdp
+    - rxvt-unicode
+    - python-netaddr
+    - rubygem-puppet-lint
+    - network-manager-applet
+    - simple-scan
+  tags:
+    - common
