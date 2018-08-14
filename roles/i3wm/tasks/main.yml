@@ -1,0 +1,132 @@
+---
+- name: dnf copr enable tjuberg/i3-desktop for i3 gaps,rofi and polybar
+  command: dnf -y copr enable tjuberg/i3-desktop
+  changed_when: false
+  args:
+    warn: false # set warn=false to prevent warning
+  tags:
+    - repos
+
+- name: copy i3 to ~/.config
+  copy:
+    src: dotfiles/i3
+    dest: /home/{{ user }}/.config
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags:
+    - dotfiles
+
+- name: copy polybar to ~/.config
+  copy:
+    src: dotfiles/polybar
+    dest: /home/{{ user }}/.config
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags:
+    - dotfiles
+
+- name: install the i3 window manager packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  ignore_errors: yes
+  with_items:
+    - i3-gaps
+    - i3-gaps-doc
+    - i3-ipc
+    - i3lock
+    - i3status
+    - rofi
+    - lightdm
+    - lightdm-gtk
+    - lightdm-gtk-greeter-settings
+    - thunar
+    - lxrandr
+    - xbacklight
+    - blueberry
+    - feh
+    - scrot
+    - ImageMagick
+    - acpi
+    - python3-tkinter
+    - pavucontrol
+    - polybar
+    - pygtk2
+    - xautolock
+    - help2man
+    - light
+  tags:
+    - i3wm
+
+- name: disable gdm service
+  systemd:
+    name: gdm
+    enabled: no
+  tags:
+    - i3wm
+
+- name: enable lightdm service
+  systemd:
+    name: lightdm
+    enabled: yes
+  tags:
+    - i3wm
+
+- name: copy i3-lock to /usr/local/bin
+  copy:
+    src: usr/local/bin/i3-lock
+    dest: /usr/local/bin/i3-lock
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - i3wm
+
+- name: copy suspend service to systemd
+  copy:
+    src: etc/systemd/system/suspend.service
+    dest: /etc/systemd/system/suspend@{{ user }}.service
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - i3wm
+
+- name: enable suspend service
+  systemd:
+    name: suspend@{{ user }}.service
+    enabled: yes
+    state: stopped
+  tags:
+    - i3wm
+
+
+- name: copy lock service to systemd
+  copy:
+    src: etc/systemd/system/lock.service
+    dest: /etc/systemd/system/lock@{{ user }}.service
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - i3wm
+
+- name: enable lock service
+  systemd:
+    name: lock@{{ user }}.service
+    enabled: yes
+    state: started
+  tags:
+    - i3wm
+
+
+- name: copy wallpaper to ~/.wallpaper
+  copy:
+    src: wallpaper/star-trek-discovery.jpg
+    dest: /home/{{ user }}/.wallpaper.jpg
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  tags:
+    - i3wm
+
