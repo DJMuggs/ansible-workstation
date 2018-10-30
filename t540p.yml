@@ -2,9 +2,9 @@
   hosts: workstation
   roles:
     - role: common
+    - role: bumblebee
     - role: dotfiles
     - role: ioscheduler
-    - role: google
     - role: clamav
     - role: vim
     - role: virtualization

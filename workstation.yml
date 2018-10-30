@@ -4,7 +4,6 @@
     - role: common
     - role: dotfiles
     - role: ioscheduler
-    - role: google
     - role: clamav
     - role: vim
     - role: virtualization

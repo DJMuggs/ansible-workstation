@@ -55,7 +55,8 @@ font-3 = FontAwesome:pixelsize=8;0
 
 modules-left = i3
 modules-center = xwindow
-modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard battery date powermenu
+#modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard battery date powermenu
+modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard date powermenu
 
 tray-position = right
 tray-padding = 2
