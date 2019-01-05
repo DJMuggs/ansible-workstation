@@ -1,5 +1,5 @@
 - name: Setup and configure a workstation
-  hosts: workstation
+  hosts: localhost
   roles:
     - role: common
     - role: bumblebee
@@ -9,7 +9,7 @@
     - role: vim
     - role: virtualization
     - role: foreman
-    - { role: t540p, when: ansible_os_family == 'RedHat' and ansible_distribution_major_version >= 27 }
+    - role: t540p
     - role: i3wm
   become: true
   become_user: root
