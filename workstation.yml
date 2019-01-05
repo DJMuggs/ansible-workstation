@@ -1,5 +1,5 @@
 - name: Setup and configure a workstation
-  hosts: workstation
+  hosts: localhost
   roles:
     - role: common
     - role: dotfiles
