@@ -42,21 +42,15 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-;font-0 = fixed:pixelsize=10;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-0 = "Misc Termsyn:size=8;0"
 font-1 = "MaterialIcons:pixesize=8;2"
 font-2 = siji:pixelsize=8;0
 font-3 = FontAwesome:pixelsize=8;0
-;font-0 = Wuncon Siji;2
-;font-1 = boxxy;3
-;font-2 = Monaco:pixelsize=11;3
-;font-3 = DejaVu Sans Mono:weight=none:pixelsize=9;3
 
 modules-left = i3
 modules-center = xwindow
-#modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard battery date powermenu
-modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard date powermenu
+modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard battery date powermenu
+#modules-right =  wlanspeedup wlanspeeddown wlan lanspeedup lanspeeddown lan filesystem memory cpu temperature volume xkeyboard date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -290,7 +284,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
@@ -363,8 +357,8 @@ format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 ;format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
