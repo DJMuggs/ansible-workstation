@@ -26,7 +26,7 @@
     - dotfiles
 
 - name: install the i3 window manager packages
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   ignore_errors: yes

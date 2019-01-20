@@ -1,27 +1,27 @@
 - name: install the TLP repo packages Fedora 28
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/28/x86_64/os/tlp-release-1.28.0-1.fc28.noarch.rpm
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/29/x86_64/os/tlp-release-1.29.0-1.fc29.noarch.rpm
+  when: ansible_distribution_major_version == '29'
+  ignore_errors: true
+  tags:
+    - repos
+
+- name: install the TLP repo packages Fedora 28
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/27/x86_64/os/tlp-release-1.0.9-1.fc28.noarch.rpm
   when: ansible_distribution_major_version == '28'
   ignore_errors: true
   tags:
     - repos
 
-- name: install the TLP repo packages Fedora 27
-  dnf:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/27/x86_64/os/tlp-release-1.0.9-1.fc27.noarch.rpm
-  when: ansible_distribution_major_version == '27'
-  ignore_errors: true
-  tags:
-    - repos
-
 - name: install the tlp packages
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   ignore_errors: yes

@@ -28,7 +28,7 @@
     - common
 
 - name: install the rpmfusion repo packages
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   with_items:
@@ -38,7 +38,7 @@
     - common
 
 - name: All the packages I require for my workstation
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   ignore_errors: true
@@ -63,5 +63,7 @@
     - rubygem-puppet-lint
     - network-manager-applet
     - simple-scan
+    - vlc
+    - ffmpeg
   tags:
     - common

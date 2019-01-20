@@ -1,12 +1,12 @@
 - name: install the virtualization packages
-  dnf:
+  package:
     name=@virtualization
     state=present
   tags:
     - virtualization
 
 - name: install extra virtualization packages
-  dnf:
+  package:
     name: "{{ item }}"
     state: present
   with_items:
