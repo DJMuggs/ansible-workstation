@@ -1,4 +1,4 @@
-# Ansible playbook Fedora Workstation 26+
+# Ansible playbook Fedora Workstation 28+
 This ansible playbook is for running Fedora 26+ or higher with i3 on a Lenovo T540p.  
 This includes the bumblebee driver for nvidia and fix the wireless perfomance of the Intel(R) Centrino(R) Advanced-N 6235 AGN.  
 The playbook will replace i3status with polybar and setup polybar for you.
