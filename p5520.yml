@@ -9,8 +9,6 @@
     - role: vim
     - role: virtualization
     - role: foreman
-    - role: t540p
-    - role: tlp  
     - role: i3wm
   become: true
   become_user: root
