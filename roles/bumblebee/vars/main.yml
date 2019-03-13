@@ -18,7 +18,7 @@ _packages:
     - VirtualGL.x86_64
     - VirtualGL.i686
 
-bumblebee_repos: "{{ _repos[ansible_distribution] | default_(repos['default'])] }}"
+bumblebee_repos: "{{ _repos[ansible_distribution] | default(_repos['default']) }}"
 
-bumblebee_packages: "{{ _packages[ansible_distribution] | default_(packages['default'])] }}"
+bumblebee_packages: "{{ _packages[ansible_distribution] | default(_packages['default']) }}"
 
