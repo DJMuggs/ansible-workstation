@@ -39,10 +39,10 @@
 
 - name: All the packages I require for my workstation
   package:
-    name: 
+    name:
       - "{{ item }}"
     state: present
   ignore_errors: true
-  loop: "{{ packages }}"
+  loop: "{{ common_packages }}"
   tags:
     - common
