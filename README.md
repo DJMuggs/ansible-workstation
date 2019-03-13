@@ -1,6 +1,10 @@
 # Ansible playbook Fedora Workstation 28+
+<<<<<<< HEAD
 This ansible playbook is for running Fedora 28+ or higher with i3 on a Dell Precision 5520.
 This includes the bumblebee driver for nvidia.
+=======
+This ansible playbook is for running Fedora 28+ or higher with i3 on your workstation.
+>>>>>>> e41e82f... workstation refactoring
 The playbook will replace i3status with polybar and setup polybar for you.
 
 In the playbook are some settings and features that i find usefull for my own workflow.
@@ -17,7 +21,11 @@ The following software is required for this ansible playbook to work.
 ##### Run the playbook
 Use the following command to run this playbook:
 
+<<<<<<< HEAD
 `ansible-playbook -i inventory/host -K p5520.yml -e user=$username`
+=======
+`ansible-playbook -i inventory/host -K workstation.yml -e user=$username`
+>>>>>>> e41e82f... workstation refactoring
 
 ##### Extras
 There is also an backup and restore playbook for your prescious data.
