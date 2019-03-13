@@ -1,6 +1,4 @@
 # Ansible playbook Fedora Workstation 28+
-This includes the bumblebee driver for nvidia.
-=======
 This ansible playbook is for running Fedora 28+ or higher with i3 on your workstation.
 The playbook will replace i3status with polybar and setup polybar for you.
 
