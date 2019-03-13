@@ -1,0 +1,27 @@
+packages:
+  - '@Fonts'
+  - '@Development Tools'
+  - ansible-lint
+  - chromium
+  - ffmpeg
+  - fontawesome-fonts
+  - fontawesome-fonts-web
+  - gnome-tweak-tool
+  - hplip-gui
+  - htop
+  - keychain
+  - libselinux-python
+  - liveusb-creator
+  - network-manager-applet
+  - python-netaddr
+  - remmina-plugins-spice
+  - remmina-plugins-rdp
+  - rxvt-unicode
+  - rubygem-puppet-lint
+  - setroubleshoot-server
+  - setroubleshoot
+  - simple-scan
+  - vlc
+  - wine
+  - zsh
+

@@ -3,7 +3,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/29/x86_64/os/tlp-release-1.29.0-1.fc29.noarch.rpm
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc29.noarch.rpm
   when: ansible_distribution_major_version == '29'
   ignore_errors: true
   tags:
@@ -14,7 +14,7 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/27/x86_64/os/tlp-release-1.0.9-1.fc28.noarch.rpm
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc28.noarch.rpm
   when: ansible_distribution_major_version == '28'
   ignore_errors: true
   tags:
@@ -27,8 +27,9 @@
   ignore_errors: yes
   with_items:
     - tlp
-    - akmod-tp_smapi
-    - akmod-acpi_call
+    - tlp-rdw
+      #    - akmod-tp_smapi
+      #- akmod-acpi_call
     - kernel-devel
   tags:
     - tlp

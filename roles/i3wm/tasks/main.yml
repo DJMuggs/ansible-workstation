@@ -5,7 +5,7 @@
   args:
     warn: false # set warn=false to prevent warning
   tags:
-    - repos
+    - i3wm
 
 - name: copy i3 to ~/.config
   copy:
@@ -14,7 +14,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   tags:
-    - dotfiles
+    - i3wm
 
 - name: copy polybar to ~/.config
   copy:
@@ -23,38 +23,14 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   tags:
-    - dotfiles
+    - i3wm
 
 - name: install the i3 window manager packages
   package:
     name: "{{ item }}"
     state: present
   ignore_errors: yes
-  with_items:
-    - i3-gaps
-    - i3-gaps-doc
-    - i3-ipc
-    - i3lock
-    - i3status
-    - rofi
-    - lightdm
-    - lightdm-gtk
-    - lightdm-gtk-greeter-settings
-    - thunar
-    - lxrandr
-    - xbacklight
-    - blueberry
-    - feh
-    - scrot
-    - ImageMagick
-    - acpi
-    - python3-tkinter
-    - pavucontrol
-    - polybar
-    - pygtk2
-    - xautolock
-    - help2man
-    - light
+  loop: "{{ packages }}"
   tags:
     - i3wm
 

@@ -1,4 +1,4 @@
-- name: Setup and configure a workstation
+- name: Setup and configure Dell Precision 5520
   hosts: localhost
   roles:
     - role: common
@@ -8,7 +8,6 @@
     - role: clamav
     - role: vim
     - role: virtualization
-    - role: foreman
     - role: i3wm
   become: true
   become_user: root

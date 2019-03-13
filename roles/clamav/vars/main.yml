@@ -1,0 +1,7 @@
+packages:
+  - clamav
+  - clamav-scanner-systemd
+  - clamav-update
+  - clamtk
+  - thunar-sendto-clamtk
+

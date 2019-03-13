@@ -1,0 +1,6 @@
+packages:
+  - vim-common
+  - vim-enhanced
+  - vim-filesystem
+  - vim-omnicppcomplete
+

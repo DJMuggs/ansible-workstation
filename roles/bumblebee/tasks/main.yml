@@ -1,27 +1,21 @@
 ---
 - name: install the bumblebee repo packages
   package:
-    name: "{{ item }}"
+    name:
+      - "{{ item }}"
     state: present
-  with_items:
-    - https://linux.itecs.ncsu.edu/redhat/public/bumblebee/fedora{{ ansible_distribution_major_version }}/noarch/bumblebee-release-1.3-1.noarch.rpm
-    - https://linux.itecs.ncsu.edu/redhat/public/bumblebee-nonfree/fedora{{ ansible_distribution_major_version }}/noarch/bumblebee-nonfree-release-1.3-1.noarch.rpm
-  when: ansible_distribution_major_version >= '27'
+  loop: "{{ bumblebee_repos }}"
+  when: ansible_distribution_major_version >= '28'
+  ignore_errors: true
   tags:
     - bumblebee
 
 - name: install the bumblebee packages
   package:
-    name:  "{{ item }}"
+    name:
+      - "{{ item }}"
     state: present
-  with_items:
-    - bumblebee
-    - bbswitch-dkms
-    - VirtualGL.x86_64
-    - VirtualGL.i686
-    - primus.x86_64
-    - primus.i686
-    - kernel-devel
+  loop: "{{ bumblebee_packages }}"
   ignore_errors: true
   tags:
     - bumblebee

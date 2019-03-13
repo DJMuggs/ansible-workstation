@@ -1,16 +1,8 @@
-- name: install the virtualization packages
-  package:
-    name=@virtualization
-    state=present
-  tags:
-    - virtualization
-
-- name: install extra virtualization packages
+- name: install virtualization packages
   package:
     name: "{{ item }}"
     state: present
-  with_items:
-    - libguestfs-tools
+  loop: "{{ packages }}"
   tags:
     - virtualization
 

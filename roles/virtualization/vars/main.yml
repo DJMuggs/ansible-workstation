@@ -1,0 +1,5 @@
+packages:
+  - '@virtualization'
+  - libguestfs-tools
+  
+
