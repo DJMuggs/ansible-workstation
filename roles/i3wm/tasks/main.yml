@@ -7,6 +7,34 @@
   tags:
     - i3wm
 
+- name: install the i3 window manager packages
+  package:
+    name: "{{ item }}"
+    state: present
+  ignore_errors: yes
+  loop: "{{ i3wm_packages }}"
+  tags:
+    - i3wm
+
+- name: set graphic boot as default boot target
+  file: path=/etc/systemd/system/default.target src=/lib/systemd/system/graphical.target state=link
+  tags:
+    - i3wm
+
+- name: disable gdm service
+  systemd:
+    name: gdm
+    enabled: no
+  tags:
+    - i3wm
+
+- name: enable lightdm service
+  systemd:
+    name: lightdm
+    enabled: yes
+  tags:
+    - i3wm
+
 - name: copy i3 to ~/.config
   copy:
     src: dotfiles/i3
@@ -22,29 +50,6 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
-  tags:
-    - i3wm
-
-- name: install the i3 window manager packages
-  package:
-    name: "{{ item }}"
-    state: present
-  ignore_errors: yes
-  loop: "{{ i3wm_packages }}"
-  tags:
-    - i3wm
-
-- name: disable gdm service
-  systemd:
-    name: gdm
-    enabled: no
-  tags:
-    - i3wm
-
-- name: enable lightdm service
-  systemd:
-    name: lightdm
-    enabled: yes
   tags:
     - i3wm
 
