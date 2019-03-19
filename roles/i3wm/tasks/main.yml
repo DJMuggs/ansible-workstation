@@ -50,6 +50,7 @@
     dest: /home/{{ user }}/.config
     owner: "{{ user }}"
     group: "{{ user }}"
+    mode: preserve
   tags:
     - i3wm
 

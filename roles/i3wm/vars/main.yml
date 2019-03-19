@@ -46,6 +46,7 @@ _packages:
   - xautolock
   - xbacklight
   - xfce4-power-manager
+  - xorg-x11-apps
   - zathura
   - zathura-plugins-all
   - ImageMagick

@@ -144,6 +144,16 @@ workspace 3 output DP-1-2
 workspace 6 output DP-1-2
 workspace 9 output DP-1-2
 
+# Assign Chromium to workspace 2
+assign [class="^Chromium$"] → 2
+# Assign Firefox to workspace 4
+assign [class="^Firefox$"] → 4
+# Assign Remmina to workspace 5
+assign [class="^Remmina$"] → 5
+# Assign VScode to workspace 6
+assign [class="^Code$"] → 6
+
+
 # move current workspace between monitors
 bindsym $mod+Control+j move workspace to output left
 bindsym $mod+Control+k move workspace to output right
@@ -254,3 +264,5 @@ for_window [class="Steam"] floating enable, border normal 2
 for_window [class="Vlc"] floating enable, border normal 2
 for_window [class="Clamtk"] floating enable, border normal 2
 for_window [class="Remmina"] floating enable, border normal 2
+
+# vim:filetype=i3config
