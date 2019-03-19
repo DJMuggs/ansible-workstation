@@ -24,6 +24,7 @@ _packages:
     - liveusb-creator
     - lm_sensors
     - network-manager-applet
+    - p7zip
     - python-netaddr
     - remmina-plugins-spice
     - remmina-plugins-rdp
