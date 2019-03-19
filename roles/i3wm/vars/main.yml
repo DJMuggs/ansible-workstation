@@ -8,6 +8,7 @@ _packages:
   - chromium
   - feh
   - ffmpeg
+  - firefox
   - fontawesome-fonts
   - fontawesome-fonts-web
   - gnome-tweak-tool
