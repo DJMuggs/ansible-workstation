@@ -13,8 +13,11 @@ _packages:
     - bumblebee
     - bbswitch-dkms
     - kernel-devel
+    - libva-utils
+    - libva-vdpau-driver
     - primus.x86_64
     - primus.i686
+    - vdpauinfo
     - VirtualGL.x86_64
     - VirtualGL.i686
 

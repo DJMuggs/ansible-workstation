@@ -30,7 +30,7 @@
     name: "{{ item }}"
     state: present
   ignore_errors: yes
-  loop: "{{ packages }}"
+  loop: "{{ i3wm_packages }}"
   tags:
     - i3wm
 

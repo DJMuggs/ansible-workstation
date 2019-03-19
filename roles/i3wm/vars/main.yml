@@ -1,4 +1,7 @@
-packages:
+_packages:
+  default:
+    - empty
+  Fedora:
   - acpi
   - arandr
   - blueberry
@@ -13,14 +16,22 @@ packages:
   - lightdm
   - lightdm-gtk
   - lightdm-gtk-greeter-settings
+  - nnn
   - pavucontrol
   - polybar
   - pygtk2
   - python3-tkinter
   - rofi
   - scrot
+  - sxiv
   - thunar
   - xautolock
   - xbacklight
+  - xfce4-power-manager
+  - zathura
+  - zathura-plugins-all
   - ImageMagick
 
+# bumblebee_repos: "{{ _repos[ansible_distribution] | default(_repos['default']) }}"
+
+i3wm_packages: "{{ _packages[ansible_distribution] | default(_packages['default']) }}"
