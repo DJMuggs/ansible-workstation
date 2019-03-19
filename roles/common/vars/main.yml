@@ -8,33 +8,35 @@ _packages:
   default:
     - empty
   Fedora:
-    - '@Fonts'
-    - '@Development Tools'
+    - '@Window Managers'
+#    - '@Fonts'
+#    - '@Development Tools'
+    - ansible
     - ansible-lint
     - chromium
-    - ffmpeg
-    - fontawesome-fonts
-    - fontawesome-fonts-web
-    - gnome-tweak-tool
-    - hplip-gui
+#    - ffmpeg
+#    - fontawesome-fonts
+#    - fontawesome-fonts-web
+#    - gnome-tweak-tool
+#    - hplip-gui
     - htop
-    - intel-gpu-tools
-    - keychain
+#    - intel-gpu-tools
+#    - keychain
     - libselinux-python
-    - liveusb-creator
+#    - liveusb-creator
     - lm_sensors
-    - network-manager-applet
-    - p7zip
+#    - network-manager-applet
+#    - p7zip
     - python-netaddr
-    - remmina-plugins-spice
-    - remmina-plugins-rdp
-    - rxvt-unicode
-    - rubygem-puppet-lint
+#    - remmina-plugins-spice
+#    - remmina-plugins-rdp
+#    - rxvt-unicode
+#    - rubygem-puppet-lint
     - setroubleshoot-server
     - setroubleshoot
-    - simple-scan
-    - vlc
-    - wine
+#    - simple-scan
+#    - vlc
+#    - wine
     - zsh
 
 common_repos: "{{ _repos[ansible_distribution] | default(_repos['default']) }}"
