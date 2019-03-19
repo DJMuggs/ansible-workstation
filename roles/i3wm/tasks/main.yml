@@ -17,7 +17,7 @@
     - i3wm
 
 - name: set graphic boot as default boot target
-  file: path=/etc/systemd/system/default.target src=/lib/systemd/system/graphical.target state=link
+  file: path=/etc/systemd/system/default.target src=/usr/lib/systemd/system/graphical.target state=link
   tags:
     - i3wm
 
