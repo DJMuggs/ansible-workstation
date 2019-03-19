@@ -1,0 +1,14 @@
+- name: Setup and configure your workstation
+  hosts: localhost
+  roles:
+    - role: common
+    - role: dotfiles
+    - role: ioscheduler
+    - role: clamav
+    - role: vim
+    - role: virtualization
+    - role: i3wm
+    - role: bumblebee
+  become: true
+  become_user: root
+  become_method: sudo
