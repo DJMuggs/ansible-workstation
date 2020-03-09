@@ -5,7 +5,7 @@
       - "{{ item }}"
     state: present
   loop: "{{ bumblebee_repos }}"
-  when: ansible_distribution_major_version >= '28'
+  when: ansible_distribution_major_version >= '30'
   ignore_errors: true
   tags:
     - bumblebee
@@ -16,7 +16,7 @@
       - "{{ item }}"
     state: present
   loop: "{{ bumblebee_packages }}"
-  when: ansible_distribution_major_version >= '28'
+  when: ansible_distribution_major_version >= '31'
   ignore_errors: true
   tags:
     - bumblebee

@@ -36,7 +36,7 @@ _packages:
   - remmina-plugins-rdp
   - rxvt-unicode-ml
   - rofi
-  - rubygem-puppet-lint
+  - rubygem-yaml-lint
   - scrot
   - simple-scan
   - sxiv

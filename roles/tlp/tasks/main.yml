@@ -1,21 +1,21 @@
-- name: install the TLP repo packages Fedora 28
+- name: install the TLP repo packages Fedora 30
   package:
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc29.noarch.rpm
-  when: ansible_distribution_major_version == '29'
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc30.noarch.rpm
+  when: ansible_distribution_major_version == '30'
   ignore_errors: true
   tags:
     - repos
 
-- name: install the TLP repo packages Fedora 28
+- name: install the TLP repo packages Fedora 31
   package:
     name: "{{ item }}"
     state: present
   with_items:
-    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc28.noarch.rpm
-  when: ansible_distribution_major_version == '28'
+    - http://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc31.noarch.rpm
+  when: ansible_distribution_major_version == '31'
   ignore_errors: true
   tags:
     - repos
@@ -28,8 +28,8 @@
   with_items:
     - tlp
     - tlp-rdw
-      #    - akmod-tp_smapi
-      #- akmod-acpi_call
+    # - akmod-tp_smapi
+    # - akmod-acpi_call
     - kernel-devel
   tags:
     - tlp

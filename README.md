@@ -1,5 +1,5 @@
-# Ansible playbook Fedora Workstation 28+
-This ansible playbook is for running Fedora 28+ or higher with i3 on your workstation.
+# Ansible playbook Fedora Workstation 30+
+This ansible playbook is for running Fedora 30+ or higher with i3 on your workstation.
 The playbook will replace i3status with polybar and setup polybar for you.
 
 In the playbook are some settings and features that i find usefull for my own workflow.

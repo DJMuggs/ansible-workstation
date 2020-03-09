@@ -19,7 +19,7 @@ _packages:
     - ansible-lint
     - bash-completion
     - htop
-    - libselinux-python
+    - python3-libselinux
     - lm_sensors
     - python-netaddr
     - setroubleshoot-server

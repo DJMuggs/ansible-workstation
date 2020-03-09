@@ -1,6 +1,6 @@
 ---
-- name: check if python2-dnf is installed
-  command: rpm -q python2-dnf
+- name: check if python3-dnf is installed
+  command: rpm -q python3-dnf
   register: installed
   ignore_errors: true
   changed_when: false
@@ -10,8 +10,8 @@
     - skip_ansible_lint
     - common
 
-- name: python2-dnf is required
-  command: dnf -y install python2-dnf
+- name: python3-dnf is required
+  command: dnf -y install python3-dnf
   when: installed is failed
   args:
     warn: false # set warn=false to prevent warning
