@@ -1,9 +1,8 @@
 ---
 - name: install vim packages
   package:
-    name: "{{ item }}"
+    name: "{{packages}}"
     state: present
-  loop: "{{ packages }}"
   tags:
     - vim
 

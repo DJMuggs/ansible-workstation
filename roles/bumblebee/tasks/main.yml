@@ -1,10 +1,8 @@
 ---
 - name: install the bumblebee repo packages
   package:
-    name:
-      - "{{ item }}"
+    name: "{{bumblebee_repos}}"
     state: present
-  loop: "{{ bumblebee_repos }}"
   when: ansible_distribution_major_version >= '30'
   ignore_errors: true
   tags:
@@ -12,11 +10,9 @@
 
 - name: install the bumblebee packages
   package:
-    name:
-      - "{{ item }}"
+    name: "{{bumblebee_packages}}"
     state: present
-  loop: "{{ bumblebee_packages }}"
-  when: ansible_distribution_major_version >= '31'
+  when: ansible_distribution_major_version >= '30'
   ignore_errors: true
   tags:
     - bumblebee

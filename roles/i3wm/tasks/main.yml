@@ -9,10 +9,9 @@
 
 - name: install the i3 window manager packages
   package:
-    name: "{{ item }}"
+    name: "{{i3wm_packages}}"
     state: present
   ignore_errors: yes
-  loop: "{{ i3wm_packages }}"
   tags:
     - i3wm
 

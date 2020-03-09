@@ -1,9 +1,8 @@
 ---
 - name: Install clamav
   package:
-    name: "{{ item }}"
+    name: "{{packages}}"
     state: present
-  loop: "{{ packages }}"
   tags:
     - clamav
 

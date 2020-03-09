@@ -29,18 +29,15 @@
 
 - name: install the rpmfusion repo packages
   package:
-    name: "{{ item }}"
+    name: "{{common_repos}}"
     state: present
-  loop: "{{ common_repos }}"
   tags:
     - common
 
 - name: All the packages I require for my workstation
   package:
-    name:
-      - "{{ item }}"
+    name: "{{common_packages}}"
     state: present
   ignore_errors: true
-  loop: "{{ common_packages }}"
   tags:
     - common
